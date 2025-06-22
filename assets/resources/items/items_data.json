@@ -1,0 +1,20 @@
+{
+  "items": {
+    "potion-hp": {
+      "name": "HP Potion",
+      "description": "A potion that restores HP",
+      "image": "potion-hp",
+      "type": "Consumable",
+      "consumableType": "HP Potion",
+      "value": 10
+    },
+    "potion-mp": {
+      "name": "MP Potion",
+      "description": "A potion that restores MP",
+      "image": "potion-mp",
+      "type": "Consumable",
+      "consumableType": "MP Potion",
+      "value": 10
+    }
+  }
+}
