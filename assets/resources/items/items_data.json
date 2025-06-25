@@ -2,19 +2,53 @@
   "items": {
     "potion-hp": {
       "name": "HP Potion",
-      "description": "A potion that restores HP",
+      "description": "A potion that restores {value} HP",
       "image": "potion-hp",
       "type": "Consumable",
       "consumableType": "HP Potion",
-      "value": 10
+      "value": 20
     },
     "potion-mp": {
       "name": "MP Potion",
-      "description": "A potion that restores MP",
+      "description": "A potion that restores {value} MP",
       "image": "potion-mp",
       "type": "Consumable",
       "consumableType": "MP Potion",
-      "value": 10
+      "value": 15
+    },
+    "helmet-str": {
+      "name": "Helm of Rage",
+      "description": "Forged by the God of War, this helmet enrages its wearer",
+      "image": "helmet-str",
+      "type": "Equipment",
+      "equipmentType": "Helmet",
+      "statsModifier": {
+        "max_hp": 20,
+        "strength": 10
+      }
+    },
+    "armour-int": {
+      "name": "Robe of Wisdom",
+      "description": "No one knows its origin, but it's said to have been worned by the finest mage",
+      "image": "armour-int",
+      "type": "Equipment",
+      "equipmentType": "Armour",
+      "statsModifier": {
+        "max_hp": 50,
+        "max_mp": 40,
+        "intelligence": 10
+      }
+    },
+    "boots-agi": {
+      "name": "Boots of Agility",
+      "description": "Mythical boots, thought to be forgotten, once worned by the legendary Hermes",
+      "image": "boots-agi",
+      "type": "Equipment",
+      "equipmentType": "Boots",
+      "statsModifier": {
+        "max_hp": 10,
+        "agility": 10
+      }
     }
   }
 }

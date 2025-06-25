@@ -1,38 +1,37 @@
 import {
   _decorator,
-  assert,
   Component,
   instantiate,
   Layout,
   Prefab,
   Node,
+  Vec3,
 } from "cc";
-import GameController from "../GameController";
-import { SlotSignals } from "../../ui/InventorySlotUI";
+import ItemSlotUI, { SlotSignals } from "../../ui/InventorySlotUI";
+import loadManager from "../LoadManager";
+import { ItemData } from "../../models/Item/ItemData";
 const { ccclass, requireComponent } = _decorator;
 
 @ccclass("ItemContainer")
 @requireComponent(Layout)
-export default class ItemContainer extends Component {
+export default abstract class ItemContainer extends Component {
   protected static inventorySlotPrefab: Prefab = null;
-  protected static gameController: GameController = null;
+  protected static getItemDataByKey: (key: string) => ItemData = null;
   protected layoutComponent: Layout | null = null;
   protected itemsList: string[] = [];
+  protected numberDisplayItems: number = 0;
 
   public static inject(
-    gameController: GameController,
+    getItemDataByKey: (key: string) => ItemData,
     inventorySlotPrefab: Prefab,
   ) {
-    ItemContainer.gameController = gameController;
+    ItemContainer.getItemDataByKey = getItemDataByKey;
     ItemContainer.inventorySlotPrefab = inventorySlotPrefab;
   }
 
   protected onLoad(): void {
-    assert(
-      ItemContainer.inventorySlotPrefab != null,
-      "InventoryController: inventorySlotPrefab is null",
-    );
     this.layoutComponent = this.node.getComponent(Layout);
+    loadManager.subscribe("item-container", this.onDataFinishedLoading, this);
   }
 
   protected spawnInventorySlot(amount: number = 10): void {
@@ -41,16 +40,49 @@ export default class ItemContainer extends Component {
         ItemContainer.inventorySlotPrefab,
       );
       inventorySlot.on(SlotSignals.SELECTED, this.onSlotSelected, this);
-      inventorySlot.on(SlotSignals.UNSELECTED, this.onSlotUnselected, this);
       this.node.addChild(inventorySlot);
     }
   }
 
-  protected onSlotSelected(itemKey: string): void {
-    console.log(ItemContainer.gameController.getItemDataByKey(itemKey));
+  protected abstract onSlotSelected(itemKey: string, location: Vec3): void;
+
+  public removeItem(itemKey: string): void {
+    const slotIndex = this.itemsList.indexOf(itemKey);
+    if (slotIndex === -1) return;
+    this.numberDisplayItems--;
+    const childNode = this.node.children[slotIndex];
+    childNode.getComponent(ItemSlotUI).clear();
+    childNode.setSiblingIndex(this.itemsList.length);
+    this.itemsList.splice(slotIndex, 1);
   }
 
-  protected onSlotUnselected(itemKey: string): void {
-    console.log(itemKey);
+  public addItem(itemKey: string): void {
+    this.itemsList.push(itemKey);
+    const childIndex = this.itemsList.length - 1;
+    const imageName = ItemContainer.getItemDataByKey(itemKey).image;
+    this.displayItem(childIndex, imageName, itemKey);
+  }
+
+  protected onDataFinishedLoading(): void {
+    if (!this.itemsList) return;
+    for (let i = 0; i < this.itemsList.length; i++) {
+      const item = ItemContainer.getItemDataByKey(this.itemsList[i]);
+      this.displayItem(i, item.image, this.itemsList[i]);
+    }
+  }
+
+  protected displayItem(
+    index: number,
+    imageName: string,
+    itemKey: string,
+  ): void {
+    this.numberDisplayItems++;
+    this.node.children[index]
+      .getComponent(ItemSlotUI)
+      .setItemSprite(imageName, itemKey);
+  }
+
+  public isFull(): boolean {
+    return this.numberDisplayItems === this.node.children.length;
   }
 }

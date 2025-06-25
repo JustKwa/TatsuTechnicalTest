@@ -1,3 +1,5 @@
+import { IPlayerStatsModifier as IStatsModifier } from "../Player/StatsData";
+
 const ItemTypes = ["Equipment", "Consumable"] as const;
 export type ItemType = (typeof ItemTypes)[number];
 
@@ -17,6 +19,7 @@ export interface IItemBase {
 export interface IEquipable extends IItemBase {
   type: "Equipment";
   equipmentType: EquipmentType;
+  statsModifier?: IStatsModifier;
 }
 
 export interface IConsumable extends IItemBase {

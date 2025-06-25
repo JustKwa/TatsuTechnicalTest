@@ -1,9 +1,12 @@
-import { _decorator, resources, JsonAsset } from "cc";
+import { _decorator, resources, JsonAsset, Vec3 } from "cc";
 import ItemContainer from "./ItemContainer";
 import loadManager from "../LoadManager";
-import { IConsumable } from "../../models/Item/ItemData";
 import ItemSlotUI from "../../ui/InventorySlotUI";
 const { ccclass } = _decorator;
+
+export enum InventorySignals {
+  SELECTED = "selected",
+}
 
 interface IInventoryData {
   items?: string[];
@@ -11,29 +14,9 @@ interface IInventoryData {
 
 @ccclass("InventoryController")
 export default class InventoryController extends ItemContainer {
-  private inventoryData: IInventoryData = null;
-
   protected onLoad(): void {
     super.onLoad();
     this.loadInventoryData();
-    loadManager.subscribe("inventory-data-loaded", () => {
-      console.log(
-        (
-          ItemContainer.gameController.getItemDataByKey(
-            this.itemsList[0],
-          ) as IConsumable
-        ).value,
-      );
-      const item = ItemContainer.gameController.getItemDataByKey(
-        this.itemsList[1],
-      );
-      this.node.children[0]
-        .getComponent(ItemSlotUI)
-        .setItemSprite(item.image, this.itemsList[1]);
-      this.node.children[1]
-        .getComponent(ItemSlotUI)
-        .setItemSprite(item.image, this.itemsList[1]);
-    });
   }
 
   protected start(): void {
@@ -60,5 +43,9 @@ export default class InventoryController extends ItemContainer {
       });
       loadManager.completeChecker(id);
     });
+  }
+
+  protected onSlotSelected(itemKey: string, location: Vec3): void {
+    this.node.emit(InventorySignals.SELECTED, itemKey, location);
   }
 }

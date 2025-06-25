@@ -4,6 +4,51 @@
  <dict>
   <key>frames</key>
   <dict>
+   <key>armour-int.png</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{1,0}</string>
+    <key>spriteSize</key>
+    <string>{62,64}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{2,2},{62,64}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>boots-agi.png</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{0,-2}</string>
+    <key>spriteSize</key>
+    <string>{64,52}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{66,2},{64,52}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>helmet-str.png</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{0,1}</string>
+    <key>spriteSize</key>
+    <string>{56,58}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{2,68},{56,58}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
    <key>potion-hp.png</key>
    <dict>
     <key>aliases</key>
@@ -15,7 +60,7 @@
     <key>spriteSourceSize</key>
     <string>{64,64}</string>
     <key>textureRect</key>
-    <string>{{52,2},{40,52}}</string>
+    <string>{{66,106},{40,52}}</string>
     <key>textureRotated</key>
     <false/>
    </dict>
@@ -30,7 +75,7 @@
     <key>spriteSourceSize</key>
     <string>{64,64}</string>
     <key>textureRect</key>
-    <string>{{2,52},{40,52}}</string>
+    <string>{{116,56},{40,52}}</string>
     <key>textureRotated</key>
     <false/>
    </dict>
@@ -45,7 +90,7 @@
     <key>spriteSourceSize</key>
     <string>{48,48}</string>
     <key>textureRect</key>
-    <string>{{2,2},{48,48}}</string>
+    <string>{{66,56},{48,48}}</string>
     <key>textureRotated</key>
     <false/>
    </dict>
@@ -55,7 +100,7 @@
    <key>format</key>
    <integer>3</integer>
    <key>size</key>
-   <string>{128,128}</string>
+   <string>{162,162}</string>
    <key>textureFileName</key>
    <string>items_atlas.webp</string>
   </dict>

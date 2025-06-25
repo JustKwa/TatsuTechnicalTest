@@ -1,3 +1,11 @@
 {
-  "items": ["potion-hp", "potion-mp"]
+  "items": [
+    "potion-hp",
+    "potion-mp",
+    "potion-hp",
+    "potion-mp",
+    "helmet-str",
+    "armour-int",
+    "boots-agi"
+  ]
 }

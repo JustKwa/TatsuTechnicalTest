@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6",
+  "uuid": "c4ac0d84-56d4-4744-adfc-9358d2e119af",
   "files": [
     ".json",
     ".webp"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6@6c48a",
-      "displayName": "items_atlas",
+      "uuid": "c4ac0d84-56d4-4744-adfc-9358d2e119af@6c48a",
+      "displayName": "progress-bar-empty",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6",
+        "imageUuidOrDatabaseUri": "c4ac0d84-56d4-4744-adfc-9358d2e119af",
         "isUuid": true,
         "visible": false,
         "minfilter": "nearest",
@@ -34,25 +34,25 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6@f9941",
-      "displayName": "items_atlas",
+      "uuid": "c4ac0d84-56d4-4744-adfc-9358d2e119af@f9941",
+      "displayName": "progress-bar-empty",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": -2,
-        "offsetY": 1,
-        "trimX": 2,
-        "trimY": 2,
-        "width": 154,
-        "height": 156,
-        "rawWidth": 162,
-        "rawHeight": 162,
-        "borderTop": 0,
-        "borderBottom": 0,
-        "borderLeft": 0,
-        "borderRight": 0,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 48,
+        "height": 48,
+        "rawWidth": 48,
+        "rawHeight": 48,
+        "borderTop": 14,
+        "borderBottom": 14,
+        "borderLeft": 14,
+        "borderRight": 14,
         "packable": true,
         "pixelsToUnit": 100,
         "pivotX": 0.5,
@@ -60,17 +60,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -77,
-            -78,
+            -24,
+            -24,
             0,
-            77,
-            -78,
+            24,
+            -24,
             0,
-            -77,
-            78,
+            -24,
+            24,
             0,
-            77,
-            78,
+            24,
+            24,
             0
           ],
           "indexes": [
@@ -82,38 +82,38 @@
             3
           ],
           "uv": [
-            2,
-            160,
-            156,
-            160,
-            2,
-            4,
-            156,
-            4
+            0,
+            48,
+            48,
+            48,
+            0,
+            0,
+            48,
+            0
           ],
           "nuv": [
-            0.012345679012345678,
-            0.024691358024691357,
-            0.9629629629629629,
-            0.024691358024691357,
-            0.012345679012345678,
-            0.9876543209876543,
-            0.9629629629629629,
-            0.9876543209876543
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "minPos": [
-            -77,
-            -78,
+            -24,
+            -24,
             0
           ],
           "maxPos": [
-            77,
-            78,
+            24,
+            24,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6@6c48a",
+        "imageUuidOrDatabaseUri": "c4ac0d84-56d4-4744-adfc-9358d2e119af@6c48a",
         "atlasUuid": "",
         "trimType": "auto"
       },
@@ -127,9 +127,8 @@
   },
   "userData": {
     "type": "sprite-frame",
-    "hasAlpha": true,
-    "fixAlphaTransparencyArtifacts": true,
-    "redirect": "c66d6323-6d98-4ed8-90e0-758a8a78e4c6@6c48a",
-    "flipGreenChannel": false
+    "hasAlpha": false,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "c4ac0d84-56d4-4744-adfc-9358d2e119af@6c48a"
   }
 }

@@ -133,8 +133,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 100
+      "width": 52,
+      "height": 54
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -198,8 +198,6 @@
       "__id__": 0
     },
     "fileId": "3esRajXz9DCbgEXwfeGaqo",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -247,9 +245,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 179,
-      "g": 179,
-      "b": 179,
+      "r": 124,
+      "g": 124,
+      "b": 124,
       "a": 255
     },
     "_spriteFrame": null,
@@ -294,14 +292,14 @@
     "fileId": "bfeAQLllFINr0ggEO2m0wK"
   },
   {
-    "__type__": "cc.Button",
+    "__type__": "cc.Toggle",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 15
     },
@@ -321,9 +319,9 @@
     },
     "_hoverColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 211,
+      "g": 211,
+      "b": 211,
       "a": 255
     },
     "_pressedColor": {
@@ -331,13 +329,13 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 219
+      "a": 213
     },
     "_disabledColor": {
       "__type__": "cc.Color",
-      "r": 179,
-      "g": 179,
-      "b": 179,
+      "r": 124,
+      "g": 124,
+      "b": 124,
       "a": 255
     },
     "_normalSprite": null,
@@ -346,12 +344,17 @@
     "_disabledSprite": null,
     "_duration": 0.1,
     "_zoomScale": 1.2,
-    "_target": null,
+    "_target": {
+      "__id__": 1
+    },
+    "checkEvents": [],
+    "_isChecked": false,
+    "_checkMark": null,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "70ErJDiUZF5r0IuDc0SkLy"
+    "fileId": "37XHgFJV9HG49ntfGVBI09"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -372,7 +375,6 @@
       "__id__": 0
     },
     "fileId": "b6mI4SXlhJzImqPqcR0Y2n",
-    "instance": null,
-    "targetOverrides": null
+    "instance": null
   }
 ]

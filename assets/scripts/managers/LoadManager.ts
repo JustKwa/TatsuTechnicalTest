@@ -14,8 +14,8 @@ class LoadManager {
     return LoadManager.instance;
   }
 
-  subscribe(id: string, callback: Function): void {
-    this.subscribers.set(id, callback);
+  subscribe(id: string, callback: Function, context: any): void {
+    this.subscribers.set(id, callback.bind(context));
   }
 
   unsubscribe(id: string): void {
