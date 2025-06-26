@@ -1,9 +1,5 @@
 name: Deploy to GitHub Pages
 
-permissions:
-  contents: write    # allow pushing commits
-  pages: write       # allow Pages deployment
-
 on:
   push:
     branches:
@@ -14,20 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      # 1. Check out the main branch source
+      - name: Checkout source
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # fetch all history so we can overwrite gh-page
 
-      # Uncomment if you need to rebuild:
-      # - name: Build web-mobile
-      #   run: |
-      #     cocos-creator-cli --path . --build \
-      #       "platform=web-mobile;debug=false"
-
+      # 3. Deploy build/web-mobile to gh-page branch
       - name: Deploy to gh-page
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-page
           publish_dir: build/web-mobile
+          publish_branch: gh-page
+          # wipes out old files so only your new build remains
+          keep_files: false
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
