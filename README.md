@@ -28,3 +28,8 @@
 ## How to run
 
 1. Required Cocos Creator version: 3.8.6
+
+## Demo
+
+- Desktop:
+  https://justkwa.github.io/TatsuTechnicalTest/
