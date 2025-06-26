@@ -1,29 +1,58 @@
-name: Deploy to GitHub Pages
+name: Publish to gh-page
+
+permissions:
+  contents: read # checkout main
+  pages: write # push to gh-page
+  id-token: write # required by pages: write
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Check out the main branch source
-      - name: Checkout source
+      - name: Checkout main
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0   # fetch all history so we can overwrite gh-page
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # bring full history (needed below)
 
-      # 3. Deploy build/web-mobile to gh-page branch
-      - name: Deploy to gh-page
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web-mobile
-          publish_branch: gh-page
-          # wipes out old files so only your new build remains
-          keep_files: false
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
+      - name: Verify build output exists
+        run: |
+          if [ ! -d build/web-mobile ]; then
+            echo "::error::build/web-mobile not found"
+            exit 1
+          fi
+
+      - name: Switch to gh-page branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # If gh-page exists, check it out; otherwise create orphan
+          if git show-ref --quiet refs/heads/gh-page; then
+            git checkout gh-page
+          else
+            git checkout --orphan gh-page
+          fi
+          # Remove everything in the index working tree
+          git rm -rf . || true
+
+      - name: Copy static site to root
+        run: |
+          mkdir -p .
+          cp -r ../build/web-mobile/* .
+          # In case of hidden files (e.g. .nojekyll), adjust:
+          cp -r ../build/web-mobile/.[!.]* . || true
+
+      - name: Commit & Push
+        run: |
+          git add --all
+          # If no changes, skip
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          git commit -m "Publish static site from main @ ${{ github.sha }}"
+          git push --force origin gh-page
